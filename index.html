@@ -31,6 +31,11 @@
             cursor: pointer;
         }
 
+        #selectorH {
+            width: 150px;
+            height: 25px;
+            cursor: pointer;
+        }
         /* Panel HSL */
         #panelHSL {
             display: none;
@@ -75,10 +80,18 @@
 <body>
 
     <div class="titulo">
-        <h1>Color Moderno</h1>
+    <h1>Color Moderno</h1>
 
-        <button id="botonColor"></button>
-    </div>
+    <button id="botonColor"></button>
+
+    <input
+        type="range"
+        id="selectorH"
+        min="0"
+        max="360"
+        value="0"
+    >
+</div>
 
     <div id="panelHSL">
 
@@ -86,20 +99,10 @@
             HSL
         </div>
 
-        <div class="filaH">
-            <span>H</span>
-
-            <input
-                type="range"
-                id="selectorH"
-                min="0"
-                max="360"
-                value="0"
-            >
-
-            <span id="valorH">0°</span>
+        <div class="filaFija">
+        H&nbsp;&nbsp;<span id="valorH">0°</span>
         </div>
-
+        
         <div class="filaFija">
             S&nbsp;&nbsp;100%
         </div>
