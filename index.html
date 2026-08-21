@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Web 1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .titulo h1 {
+            margin: 0;
+        }
+
+        #colorPagina {
+            width: 25px;
+            height: 25px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Color Moderno</h1>
-
-    <label>
-        Color de la página:
+    <div class="titulo">
+        <h1>Color Moderno</h1>
         <input type="color" id="colorPagina">
-    </label>
+    </div>
 
     <script>
         const selector = document.getElementById("colorPagina");
