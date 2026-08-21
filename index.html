@@ -21,16 +21,6 @@
             margin: 0;
         }
 
-        /* Cuadro de color */
-        #botonColor {
-            width: 25px;
-            height: 25px;
-            padding: 0;
-            border: 1px solid #777;
-            background: hsl(0, 100%, 15%);
-            cursor: pointer;
-        }
-
         #selectorH {
             width: 150px;
             height: 25px;
@@ -77,9 +67,7 @@
 
     <div class="titulo">
     <h1>Color Moderno</h1>
-
-    <button id="botonColor"></button>
-
+        
     <input
         type="range"
         id="selectorH"
@@ -111,15 +99,9 @@
 
     <script>
 
-        const botonColor = document.getElementById("botonColor");
         const panelHSL = document.getElementById("panelHSL");
         const selectorH = document.getElementById("selectorH");
         const valorH = document.getElementById("valorH");
-
-        // Abrir/cerrar panel
-        botonColor.addEventListener("click", function() {
-            panelHSL.classList.toggle("abierto");
-        });
 
         // Cambiar H
         selectorH.addEventListener("input", function() {
@@ -129,8 +111,6 @@
             const color = `hsl(${H}, 100%, 15%)`;
 
             document.body.style.backgroundColor = color;
-
-            botonColor.style.backgroundColor = color;
 
             valorH.textContent = `${H}°`;
         });
