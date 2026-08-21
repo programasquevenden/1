@@ -19,28 +19,121 @@
             margin: 0;
         }
 
-        #colorPagina {
+        /* Cuadro de color */
+        #botonColor {
             width: 25px;
             height: 25px;
             padding: 0;
-            border: none;
+            border: 1px solid #777;
+            background: hsl(0, 100%, 25%);
             cursor: pointer;
+        }
+
+        /* Panel HSL */
+        #panelHSL {
+            display: none;
+            width: 280px;
+            margin-top: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+        }
+
+        #panelHSL.abierto {
+            display: block;
+        }
+
+        .tituloHSL {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .filaH {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #selectorH {
+            flex: 1;
+        }
+
+        #valorH {
+            width: 45px;
+            text-align: right;
+        }
+
+        .filaFija {
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
 
     <div class="titulo">
         <h1>Color Moderno</h1>
-        <input type="color" id="colorPagina">
+
+        <button id="botonColor"></button>
+    </div>
+
+    <div id="panelHSL">
+
+        <div class="tituloHSL">
+            HSL
+        </div>
+
+        <div class="filaH">
+            <span>H</span>
+
+            <input
+                type="range"
+                id="selectorH"
+                min="0"
+                max="360"
+                value="0"
+            >
+
+            <span id="valorH">0°</span>
+        </div>
+
+        <div class="filaFija">
+            S&nbsp;&nbsp;100%
+        </div>
+
+        <div class="filaFija">
+            L&nbsp;&nbsp;25%
+        </div>
+
     </div>
 
     <script>
-        const selector = document.getElementById("colorPagina");
 
-        selector.addEventListener("input", function() {
-            document.body.style.backgroundColor = selector.value;
+        const botonColor = document.getElementById("botonColor");
+        const panelHSL = document.getElementById("panelHSL");
+        const selectorH = document.getElementById("selectorH");
+        const valorH = document.getElementById("valorH");
+
+        // Abrir/cerrar panel
+        botonColor.addEventListener("click", function() {
+            panelHSL.classList.toggle("abierto");
         });
+
+        // Cambiar H
+        selectorH.addEventListener("input", function() {
+
+            const H = selectorH.value;
+
+            const color = `hsl(${H}, 100%, 25%)`;
+
+            document.body.style.backgroundColor = color;
+
+            botonColor.style.backgroundColor = color;
+
+            valorH.textContent = `${H}°`;
+        });
+
     </script>
 
 </body>
