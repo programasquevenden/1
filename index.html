@@ -1,111 +1,27 @@
 <!DOCTYPE html>
-<html lang = 'es'>
+<html lang="es">
 <head>
-    <meta charset = 'UTF-8'>
-    <title> Web 1 </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: hsl(0, 100%, 10%);
-            color: white;
-        }
-        .titulo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .titulo h1 {
-            margin: 0;
-        }
-        #selectorH {
-            width: 150px;
-            height: 25px;
-            cursor: pointer;
-        }
-        #panelHSL {
-            display: none;
-            width: 280px;
-            margin-top: 10px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background: white;
-        }
-        #panelHSL.abierto {
-            display: block;
-        }
-        .tituloHSL {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .filaH {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        #valorH {
-            width: 45px;
-            text-align: right;
-        }
-        .filaFija {
-            margin-top: 10px;
-        }
-    </style>
-    <!--link-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Portafolio</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222;text-align:center}
+header{background:#1e293b;color:#fff;padding:50px 20px}
+h1{margin:0}
+main{max-width:600px;margin:0 auto;padding:20px}
+.card{background:#fff;border-radius:10px;padding:20px;margin:16px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+a.btn{display:inline-block;background:#25d366;color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:bold}
+</style>
 </head>
 <body>
-
-    <div class="titulo">
-    <h1>Color Moderno</h1>
-        
-    <input
-        type="range"
-        id="selectorH"
-        min="0"
-        max="360"
-        value="0"
-    >
-</div>
-
-    <div id="panelHSL">
-
-        <div class="tituloHSL">
-            HSL
-        </div>
-
-        <div class="filaFija">
-        H&nbsp;&nbsp;<span id="valorH">0°</span>
-        </div>
-        
-        <div class="filaFija">
-            S&nbsp;&nbsp;100%
-        </div>
-
-        <div class="filaFija">
-            L&nbsp;&nbsp;10%
-        </div>
-
-    </div>
-
-    <script>
-
-        const panelHSL = document.getElementById("panelHSL");
-        const selectorH = document.getElementById("selectorH");
-        const valorH = document.getElementById("valorH");
-
-        // Cambiar H
-        selectorH.addEventListener("input", function() {
-
-            const H = selectorH.value;
-
-            const color = `hsl(${H}, 100%, 10%)`;
-
-            document.body.style.backgroundColor = color;
-
-            valorH.textContent = `${H}°`;
-        });
-
-    </script>
-
+<header>
+<h1>Mi Portafolio</h1>
+<p>Páginas web para negocios locales</p>
+</header>
+<main>
+<div class="card"><h2>Pollería</h2><p>Carta, precios y pedidos por WhatsApp.</p></div>
+<div class="card"><h2>Hamburguesería</h2><p>Carta, precios y pedidos por WhatsApp.</p></div>
+<a class="btn" href="https://wa.me/51999999999">Escríbeme por WhatsApp</a>
+</main>
 </body>
 </html>
