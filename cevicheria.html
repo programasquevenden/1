@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mar y Sazón | Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--abyss:#04161d;--deep:#082a33;--foam:#e4f3ec;--mute:#8fb0aa;--line:rgba(143,227,184,.16);--a:#7fe0d0;--c1:#17695f;--c2:#0a3340;
+--display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Instrument Sans',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--abyss);color:var(--foam);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1;letter-spacing:-.03em}
+.wrap{width:min(1100px,100% - 48px);margin-inline:auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(4,22,29,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:66px;gap:16px}
+.brand{font:800 20px var(--display);letter-spacing:-.02em}
+.back{font-size:14px;color:var(--mute);border:1px solid var(--line);padding:9px 18px;border-radius:999px;transition:.25s}
+.back:hover{color:var(--foam);background:rgba(143,227,184,.08)}
+.ph{display:grid;place-items:center;color:rgba(228,243,236,.7);font-size:13px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 12px,transparent 12px 24px),linear-gradient(160deg,var(--c1),var(--c2))}
+.ph span{padding:8px 14px;border:1px dashed rgba(228,243,236,.4);border-radius:999px;background:rgba(4,22,29,.35)}
+.hero{padding:70px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.eyebrow{color:var(--a);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(42px,6vw,84px);font-weight:800;animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+.hero p{color:#b9d3cc;max-width:42ch;margin:24px 0 34px;animation:up .9s .15s cubic-bezier(.2,.8,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(28px)}}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:600;background:var(--a);color:#04261b;margin-right:10px;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.g{background:none;color:var(--foam);border:1px solid var(--line)}
+.hero .ph{aspect-ratio:1;border-radius:46px;border:1px solid var(--line);box-shadow:0 40px 90px -20px #000}
+section{padding:60px 0}
+h2{font-size:clamp(34px,4.4vw,60px);font-weight:800;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--deep);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .35s,border-color .35s}
+.card:hover{transform:translateY(-6px);border-color:var(--a)}
+.card .ph{aspect-ratio:4/3}
+.card div.t{padding:20px 22px 24px}
+.card h3{font-size:24px;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+.card h3 b{color:var(--a);white-space:nowrap}
+.card p{margin:8px 0 0;color:var(--mute);font-size:15px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.box{background:var(--deep);border:1px solid var(--line);border-radius:22px;padding:30px}
+.box h3{font-size:22px;margin-bottom:14px;color:var(--a)}
+.box p{margin:6px 0;color:#cfe6de}
+.visit .ph{border-radius:22px;border:1px solid var(--line);min-height:240px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;margin-top:40px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:860px){.hero .wrap,.visit{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><span class="brand">Mar y Sazón</span><a class="back" href="index.html#trabajos">&larr; Volver al portafolio</a></div></nav>
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Cevichería</div>
+    <h1>Fresco del mar a tu plato.</h1>
+    <p>Ceviches, tiraditos y jaleas preparados al momento con pescado del día y limón recién exprimido.</p>
+    <a class="btn" href="#carta">Ver carta</a><a class="btn g" href="#visita">Cómo llegar</a>
+  </div>
+  <div class="ph"><span>IMAGEN: insertar</span></div>
+</div></header>
+<section id="carta"><div class="wrap">
+  <h2>Nuestra carta</h2>
+  <div class="grid">
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Ceviche clásico<b>S/ 32</b></h3><p>Pescado del día, cebolla y ají.</p></div></article>
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Ceviche mixto<b>S/ 38</b></h3><p>Pescado y mariscos.</p></div></article>
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Tiradito<b>S/ 34</b></h3><p>Con crema de ají amarillo.</p></div></article>
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Leche de tigre<b>S/ 16</b></h3><p>Con trozos de pescado.</p></div></article>
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Chicharrón de pescado<b>S/ 29</b></h3><p>Con yucas y salsa criolla.</p></div></article>
+    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Jalea mixta<b>S/ 48</b></h3><p>Para compartir.</p></div></article>
+  </div>
+</div></section>
+<section id="visita"><div class="wrap">
+  <h2>Visítanos</h2>
+  <div class="visit">
+    <div class="box"><h3>Dirección y horarios</h3><p>Av. Principal 123, tu ciudad</p><p>Lunes a domingo: 12:00 pm a 11:00 pm</p><p>Delivery disponible</p></div>
+    <div class="ph"><span>MAPA: insertar</span></div>
+  </div>
+</div></section>
+<footer><div class="wrap"><span>Mar y Sazón. Página de demostración.</span><a href="index.html#trabajos">&larr; Volver al portafolio</a></div></footer>
+</body>
+</html>
