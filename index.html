@@ -83,12 +83,15 @@ section{position:relative;z-index:1}
 .head p{max-width:38ch;color:var(--mute);margin:0}
 .case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-bottom:var(--x);background:var(--deep)}
 .case:last-child{margin-bottom:0}
-.shot{position:relative;min-height:420px}
+.shot{position:relative;min-height:420px;display:block;overflow:hidden}
+.shot .ph{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.case:hover .shot .ph{transform:scale(1.04)}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
 .trow{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px}
 .price{padding:8px 16px;border-radius:999px;background:var(--mint);color:#04261b;font:800 clamp(20px,2vw,26px) var(--display);letter-spacing:-.02em;box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
 .shot .ph,.shot img{position:absolute;inset:0;width:100%;height:100%;border-radius:0;border:0;object-fit:cover}
 .info{padding:46px;display:flex;flex-direction:column;justify-content:flex-start;gap:26px;border-left:1px solid var(--line)}
-.info h3{font-size:clamp(30px,3.4vw,46px);font-weight:800}
+.info h3{font-size:clamp(28px,3vw,40px);font-weight:800}
 .info p{color:#cfe6de;font-size:19px;margin:0}
 .info ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 .info li{display:flex;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:15.5px}
@@ -181,42 +184,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section class="work" id="trabajos">
   <div class="wrap">
     <article class="case">
-      <div class="shot"><div class="ph green"><span>IMAGEN: insertar</span></div></div>
+      <a class="shot" href="polleria.html" aria-label="Ver demo de Pollerías"><div class="ph green"><span>IMAGEN: insertar</span></div></a>
       <div class="info">
         <div class="trow"><h3>Pollerías</h3><span class="price">$100</span></div>
         <p>Combos, parrillas y promociones con foto grande, y un botón de pedido que siempre está a un toque.</p>
         <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Carta digital con precios y combos</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pedidos directos a tu WhatsApp</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mapa, horarios y delivery</li></ul>
-        <a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20poller%C3%ADa" target="_blank" rel="noopener">Quiero una para mi pollería</a>
+        <div class="acts"><a class="btn main" href="polleria.html">Ver demo</a><a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20poller%C3%ADa" target="_blank" rel="noopener">Quiero una para mi pollería</a></div>
       </div>
     </article>
 
     <article class="case">
-      <div class="shot"><div class="ph blue"><span>IMAGEN: insertar</span></div></div>
+      <a class="shot" href="hamburgueseria.html" aria-label="Ver demo de Hamburgueserías"><div class="ph blue"><span>IMAGEN: insertar</span></div></a>
       <div class="info">
         <div class="trow"><h3>Hamburgueserías</h3><span class="price">$100</span></div>
         <p>Una identidad visual propia, animaciones suaves y una carta que da ganas de pedir antes de terminar de leer.</p>
         <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Menú interactivo por categorías</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Diseño a medida de tu marca</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rápida en el celular</li></ul>
-        <a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20hamburgueser%C3%ADa" target="_blank" rel="noopener">Quiero una para mi hamburguesería</a>
+        <div class="acts"><a class="btn main" href="hamburgueseria.html">Ver demo</a><a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20hamburgueser%C3%ADa" target="_blank" rel="noopener">Quiero una para mi hamburguesería</a></div>
       </div>
     </article>
 
     <article class="case">
-      <div class="shot"><div class="ph green"><span>IMAGEN: insertar</span></div></div>
+      <a class="shot" href="cevicheria.html" aria-label="Ver demo de Cevicherías"><div class="ph green"><span>IMAGEN: insertar</span></div></a>
       <div class="info">
         <div class="trow"><h3>Cevicherías</h3><span class="price">$100</span></div>
         <p>Una web fresca que muestra tus ceviches, tiraditos y jaleas con fotos que se antojan, y deja el pedido a un toque de WhatsApp.</p>
         <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Carta por tipo de plato y porciones</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pedidos directos a tu WhatsApp</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Ubicación, horarios y reservas</li></ul>
-        <a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cevicher%C3%ADa" target="_blank" rel="noopener">Quiero una para mi cevichería</a>
+        <div class="acts"><a class="btn main" href="cevicheria.html">Ver demo</a><a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20cevicher%C3%ADa" target="_blank" rel="noopener">Quiero una para mi cevichería</a></div>
       </div>
     </article>
 
     <article class="case">
-      <div class="shot"><div class="ph blue"><span>IMAGEN: insertar</span></div></div>
+      <a class="shot" href="chifa.html" aria-label="Ver demo de Chifas"><div class="ph blue"><span>IMAGEN: insertar</span></div></a>
       <div class="info">
         <div class="trow"><h3>Chifas</h3><span class="price">$100</span></div>
         <p>Tu carta de chaufas, tallarines saltados y platos al wok bien ordenada, con fotos grandes y pedidos directos a tu WhatsApp.</p>
         <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Carta con combos y precios</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pedidos directos a tu WhatsApp</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fe3b8" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Delivery, horarios y mapa</li></ul>
-        <a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20chifa" target="_blank" rel="noopener">Quiero una para mi chifa</a>
+        <div class="acts"><a class="btn main" href="chifa.html">Ver demo</a><a class="btn ghost" href="https://wa.me/51903307861?text=Hola%2C%20quiero%20una%20web%20para%20mi%20chifa" target="_blank" rel="noopener">Quiero una para mi chifa</a></div>
       </div>
     </article>
   </div>
@@ -226,7 +229,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <div class="wrap">
     <div class="head"><h2>Comuniquémonos hoy para publicar<br>tu página web al mundo</h2></div>
     <div class="steps">
-      <div class="step"><b>1</b><h3>Me escribes</h3><p>Por WhatsApp, me cuentas sobre tu local y lo que quieres lograr.</p></div>
+      <div class="step"><b>1</b><h3>Me escribes</h3><p>Por WhatsApp, me comentas sobre tu local y lo que quieres lograr.</p></div>
       <div class="step"><b>2</b><h3>Lo diseño</h3><p>Soy diseñador gráfico y programador, mi trabajo es crear tu página web con un diseño excepcional, utilizando tus fotos, tus colores y tu carta.</p></div>
       <div class="step"><b>3</b><h3>Lo publicamos</h3><p>Tu negocio llega a más personas, tu página web estará disponible las 24 horas, diseñada para atraer nuevos clientes y mostrar lo mejor de tu negocio desde cualquier lugar, ya sea por computadora o celular.<br>Pago único y simple, con este modelo de enlace:<br><span class="url">https://programasquevenden.github.io/N°</span></p></div>
     </div>
