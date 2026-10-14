@@ -43,7 +43,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero-bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
 .hero-bg .ph,.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-bg{background:var(--abyss)}
-.hero-bg img{object-fit:contain;object-position:right center;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%);mask-image:linear-gradient(90deg,transparent 0,#000 16%)}
+.hero-bg img{object-fit:contain;object-position:right center}
 .hero-bg .ph{display:flex;justify-content:flex-end;align-items:center;padding-right:16%}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--abyss) 0%,rgba(4,22,29,.86) 32%,rgba(4,22,29,.35) 62%,rgba(4,22,29,.1) 100%),linear-gradient(0deg,var(--abyss) 0%,transparent 22%)}
 .hero .wrap{position:relative}
@@ -284,6 +284,14 @@ if(!rm){
     b.addEventListener('pointerleave',()=>b.style.transform='');
   });
 }
+// portada: difumina el borde izquierdo real de la imagen (degradado, sin corte seco)
+(function(){var im=document.querySelector('.hero-bg img');if(!im)return;
+function m(){if(!im.naturalWidth)return;var b=im.parentElement.getBoundingClientRect(),w=b.width,h=b.height,
+iw=Math.min(w,h*im.naturalWidth/im.naturalHeight),e=w-iw,f=iw*.35,
+g='linear-gradient(90deg,transparent '+e+'px,rgba(0,0,0,.15) '+(e+f*.3)+'px,rgba(0,0,0,.5) '+(e+f*.6)+'px,#000 '+(e+f)+'px)';
+im.style.webkitMaskImage=g;im.style.maskImage=g}
+im.addEventListener('load',m);addEventListener('resize',m);
+if(window.ResizeObserver)new ResizeObserver(m).observe(im.parentElement);m()})();
 // form -> WhatsApp
 document.getElementById('f').addEventListener('submit',e=>{
   e.preventDefault();const d=new FormData(e.target);
