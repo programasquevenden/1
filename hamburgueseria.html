@@ -1,90 +1,219 @@
 <!DOCTYPE html>
+<!--
+  -- NOTAS (HSL) -- solo se usan estos 4 colores en toda la pagina
+  -- color1: H0   S0%   L15%  -> gris    (fondo de la pagina, interior de "Insertar imagen", letras de pestañas y buscador)
+  -- color2: H315 S60%  L30%  -> mauve oscuro (sin uso por ahora)
+  -- color3: H315 S60%  L70%  -> rosa    (acentos, pestañas)
+  -- color4: H315 S60%  L95%  -> crema   (textos, precios, buscador, logo, linea de abajo, borde y texto de "Insertar imagen")
+-->
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BurgerLab | Demo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Hamburgueseria</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cstyle%3Epath%7Bfill:hsl%28315%2C60%25%2C95%25%29%7D%40media %28prefers-color-scheme:light%29%7Bpath%7Bfill:hsl%28315%2C60%25%2C30%25%29%7D%7D%3C/style%3E%3Cpath fill-rule=%22evenodd%22 d=%22M46.61 0.23L46.33 0.60L42.89 0.60L42.61 0.98L40.66 0.98L40.38 1.35L38.80 1.35L38.52 1.72L37.31 1.72L37.04 2.09L36.20 2.09L35.92 2.46L34.71 2.46L33.69 3.21L32.85 3.21L32.57 3.58L31.74 3.58L31.46 3.95L30.62 3.95L30.34 4.32L29.88 4.32L29.60 4.69L29.14 4.69L28.86 5.07L28.39 5.07L28.11 5.44L27.65 5.44L27.37 5.81L26.91 5.81L26.63 6.18L25.42 6.55L24.77 7.30L23.56 7.67L22.91 8.41L22.44 8.41L21.79 9.15L21.33 9.15L20.31 10.27L19.84 10.27L19.19 11.01L18.73 11.01L16.22 13.62L15.75 13.62L13.43 15.94L13.43 16.40L10.83 18.91L10.83 19.38L9.71 20.40L9.71 20.86L8.60 21.89L8.22 23.09L7.48 23.75L7.11 24.95L6.37 25.60L6.37 26.07L5.99 26.35L5.99 26.81L5.62 27.09L5.62 27.56L5.25 27.83L5.25 28.30L4.88 28.58L4.88 29.04L4.51 29.32L4.51 29.79L3.76 30.81L3.76 31.64L3.39 31.92L3.39 32.76L2.65 33.78L2.65 34.62L2.28 34.90L2.28 35.73L1.91 36.01L1.91 37.22L1.53 37.50L1.53 38.71L1.16 38.99L1.16 40.57L0.79 40.85L0.79 42.80L0.42 43.08L0.42 46.14L0.05 46.42L0.05 53.58L0.42 53.86L0.42 56.92L0.79 57.20L0.79 59.15L1.16 59.43L1.16 61.01L1.53 61.29L1.53 62.50L1.91 62.78L1.91 63.99L2.28 64.27L2.28 65.10L2.65 65.38L2.65 66.22L3.02 66.50L3.02 67.33L3.76 68.36L3.76 69.19L4.14 69.47L4.14 69.93L4.51 70.21L4.51 70.68L4.88 70.96L4.88 71.42L5.25 71.70L5.25 72.17L5.62 72.44L5.62 72.91L5.99 73.19L5.99 73.65L6.37 73.93L6.74 75.14L7.48 75.79L7.48 76.25L8.22 76.91L8.60 78.11L9.71 79.14L9.71 79.60L10.83 80.62L10.83 81.09L13.06 83.22L13.06 83.69L16.12 86.76L16.59 86.76L18.73 88.99L19.19 88.99L20.21 90.10L20.68 90.10L21.70 91.22L22.91 91.59L23.56 92.33L24.77 92.70L25.42 93.45L25.88 93.45L26.16 93.82L26.63 93.82L26.91 94.19L27.37 94.19L27.65 94.56L28.11 94.56L28.39 94.93L28.86 94.93L29.14 95.31L29.60 95.31L30.62 96.05L31.46 96.05L31.74 96.42L32.57 96.42L33.60 97.17L34.43 97.17L34.71 97.54L35.55 97.54L35.83 97.91L37.04 97.91L37.31 98.28L38.52 98.28L38.80 98.65L40.01 98.65L40.29 99.02L42.61 99.02L42.89 99.40L45.59 99.40L45.86 99.77L54.14 99.77L54.41 99.40L57.11 99.40L57.39 99.02L59.71 99.02L59.99 98.65L61.20 98.65L61.48 98.28L62.69 98.28L62.96 97.91L64.17 97.91L64.45 97.54L65.29 97.54L65.57 97.17L66.40 97.17L67.43 96.42L68.26 96.42L68.54 96.05L69.38 96.05L69.66 95.68L70.12 95.68L70.40 95.31L70.86 95.31L71.14 94.93L71.61 94.93L71.89 94.56L72.35 94.56L72.63 94.19L73.09 94.19L73.37 93.82L73.84 93.82L74.12 93.45L75.33 93.08L75.98 92.33L77.18 91.96L77.83 91.22L78.30 91.22L79.32 90.10L79.79 90.10L80.81 88.99L81.27 88.99L83.41 86.76L83.88 86.76L87.31 83.32L87.31 82.85L89.17 81.09L89.17 80.62L90.29 79.60L90.29 79.14L91.40 78.11L91.40 77.65L92.15 77.00L92.15 76.53L92.52 76.25L92.52 75.79L93.26 75.14L93.26 74.67L93.63 74.40L93.63 73.93L94.01 73.65L94.01 73.19L94.38 72.91L94.38 72.44L94.75 72.17L94.75 71.70L95.12 71.42L95.12 70.96L95.49 70.68L95.49 70.21L96.24 69.19L96.24 68.36L96.98 67.33L96.98 66.50L97.35 66.22L97.35 65.38L97.72 65.10L97.72 64.27L98.09 63.99L98.09 62.78L98.47 62.50L98.47 61.29L98.84 61.01L98.84 59.80L99.21 59.53L99.21 57.20L99.58 56.92L99.58 54.23L99.95 53.95L99.95 46.05L99.58 45.77L99.58 43.08L99.21 42.80L99.21 40.47L98.84 40.20L98.84 38.99L98.47 38.71L98.47 37.50L98.09 37.22L98.09 36.01L97.72 35.73L97.72 34.90L97.35 34.62L97.35 33.78L96.98 33.50L96.98 32.67L96.24 31.64L96.24 30.81L95.86 30.53L95.86 30.07L95.49 29.79L95.49 29.32L95.12 29.04L95.12 28.58L94.75 28.30L94.75 27.83L94.38 27.56L94.38 27.09L94.01 26.81L94.01 26.35L93.63 26.07L93.26 24.86L92.52 24.21L92.52 23.75L92.15 23.47L92.15 23.00L91.40 22.35L91.40 21.89L90.29 20.86L90.29 20.40L89.17 19.38L89.17 18.91L86.94 16.78L86.94 16.31L84.25 13.62L83.78 13.62L81.27 11.01L80.81 11.01L79.79 9.90L79.32 9.90L78.30 8.78L77.09 8.41L76.44 7.67L75.23 7.30L74.58 6.55L74.12 6.55L73.84 6.18L73.37 6.18L73.09 5.81L72.63 5.81L72.35 5.44L71.89 5.44L71.61 5.07L71.14 5.07L70.86 4.69L70.40 4.69L69.38 3.95L68.54 3.95L68.26 3.58L67.43 3.58L67.15 3.21L66.68 3.21L66.40 2.83L65.57 2.83L65.29 2.46L64.08 2.46L63.80 2.09L62.96 2.09L62.69 1.72L61.48 1.72L61.20 1.35L59.62 1.35L59.34 0.98L57.39 0.98L57.11 0.60L54.04 0.60L53.76 0.23ZM43.08 3.11L46.61 2.74L52.93 2.74L60.36 3.86L65.47 5.34L70.77 7.57L73.84 9.25L77.65 11.76L82.20 15.57L84.62 17.98L88.06 22.17L90.57 25.98L92.24 29.04L94.47 34.34L95.86 39.08L96.70 43.45L97.07 46.89L97.07 53.02L96.70 56.83L95.21 63.52L93.91 67.33L92.33 70.96L88.62 77.18L84.06 82.76L80.34 86.29L77.00 88.89L72.54 91.68L71.70 91.87L71.51 91.68L70.77 79.32L71.70 46.51L71.79 21.70L71.61 20.96L70.68 20.21L69.38 20.31L67.05 22.82L63.99 27.56L61.01 34.53L59.99 38.80L59.25 43.73L58.41 53.86L58.22 64.45L58.78 72.54L59.43 74.67L60.27 76.16L61.57 77.28L62.87 77.83L63.80 78.76L64.73 81.09L65.01 85.36L64.36 94.66L64.08 95.31L55.81 97.17L52.09 97.44L47.26 97.44L40.66 96.61L40.38 96.14L40.10 94.10L39.36 83.04L39.36 78.49L40.10 71.61L40.94 68.82L41.68 67.24L42.98 65.57L46.70 62.22L47.72 60.92L48.28 59.71L48.65 52.46L48.56 38.89L48.19 24.95L47.72 24.21L46.98 23.84L46.42 23.84L45.68 24.21L45.21 24.95L45.21 49.49L44.84 50.33L43.91 50.98L43.26 50.98L42.52 50.60L41.96 49.77L41.96 25.42L41.78 24.58L41.22 24.02L40.20 23.84L39.27 24.21L38.80 24.95L38.80 49.58L38.34 50.51L37.59 50.98L36.20 50.70L35.55 49.67L35.55 25.14L35.36 24.58L34.53 23.93L33.78 23.84L32.95 24.12L32.39 24.95L32.39 49.77L32.11 50.42L30.99 51.16L29.60 50.70L29.14 49.67L29.14 25.05L28.76 24.30L28.02 23.84L27.00 23.93L26.16 25.05L25.70 43.82L25.70 53.11L26.07 59.80L27.46 62.04L31.18 65.38L32.39 66.87L33.41 68.91L34.25 71.70L34.90 77.37L34.99 82.30L34.62 89.64L33.97 94.66L33.32 94.66L29.04 92.80L26.07 91.22L22.44 88.89L17.43 84.80L12.59 79.60L8.32 73.28L5.53 67.43L3.76 61.94L2.56 55.53L2.28 51.07L2.56 44.84L3.30 40.20L4.04 37.22L5.25 33.50L7.48 28.49L9.99 24.21L12.96 20.12L14.54 18.26L19.10 13.89L23.00 10.92L26.35 8.78L31.09 6.46L34.80 5.07L37.59 4.23Z%22/%3E%3C/svg%3E">
 <style>
-:root{--abyss:#04161d;--deep:#082a33;--foam:#e4f3ec;--mute:#8fb0aa;--line:rgba(143,227,184,.16);--a:#6cc3e6;--c1:#1f6a8c;--c2:#0a2f43;
---display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Instrument Sans',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--abyss);color:var(--foam);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:var(--display);margin:0;line-height:1;letter-spacing:-.03em}
-.wrap{width:min(1100px,100% - 48px);margin-inline:auto}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(4,22,29,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:66px;gap:16px}
-.brand{font:800 20px var(--display);letter-spacing:-.02em}
-.back{font-size:14px;color:var(--mute);border:1px solid var(--line);padding:9px 18px;border-radius:999px;transition:.25s}
-.back:hover{color:var(--foam);background:rgba(143,227,184,.08)}
-.ph{display:grid;place-items:center;color:rgba(228,243,236,.7);font-size:13px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 12px,transparent 12px 24px),linear-gradient(160deg,var(--c1),var(--c2))}
-.ph span{padding:8px 14px;border:1px dashed rgba(228,243,236,.4);border-radius:999px;background:rgba(4,22,29,.35)}
-.hero{padding:70px 0 90px}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.eyebrow{color:var(--a);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
-.hero h1{font-size:clamp(42px,6vw,84px);font-weight:800;animation:up .9s cubic-bezier(.2,.8,.2,1) both}
-.hero p{color:#b9d3cc;max-width:42ch;margin:24px 0 34px;animation:up .9s .15s cubic-bezier(.2,.8,.2,1) both}
-.hero .ph img{width:100%;height:100%;object-fit:cover;display:block}
-@keyframes up{from{opacity:0;transform:translateY(28px)}}
-.btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:600;background:var(--a);color:#04261b;margin-right:10px;transition:transform .25s}
-.btn:hover{transform:translateY(-3px)}
-.btn.g{background:none;color:var(--foam);border:1px solid var(--line)}
-.hero .ph{overflow:hidden;aspect-ratio:1;border-radius:46px;border:1px solid var(--line);box-shadow:0 40px 90px -20px #000}
-section{padding:60px 0}
-h2{font-size:clamp(34px,4.4vw,60px);font-weight:800;margin-bottom:40px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:var(--deep);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .35s,border-color .35s}
-.card:hover{transform:translateY(-6px);border-color:var(--a)}
-.card .ph{aspect-ratio:4/3}
-.card div.t{padding:20px 22px 24px}
-.card h3{font-size:24px;font-weight:600;display:flex;justify-content:space-between;gap:12px}
-.card h3 b{color:var(--a);white-space:nowrap}
-.card p{margin:8px 0 0;color:var(--mute);font-size:15px}
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.box{background:var(--deep);border:1px solid var(--line);border-radius:22px;padding:30px}
-.box h3{font-size:22px;margin-bottom:14px;color:var(--a)}
-.box p{margin:6px 0;color:#cfe6de}
-.visit .ph{border-radius:22px;border:1px solid var(--line);min-height:240px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;margin-top:40px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:860px){.hero .wrap,.visit{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:540px){.grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  /* -- COLORES -- */
+  :root{
+    --color2:hsl(315,60%,30%);
+    --color1:hsl(0,0%,15%);
+    --color3:hsl(315,60%,70%);
+    --color4:hsl(315,60%,95%);
+    --gap:1.25rem; /* -- X: misma separacion buscador/pestañas/linea/banner -- */
+    color-scheme:dark;
+  }
+
+  /* -- BASE -- */
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--color1);
+    color:var(--color4);
+    font-family:'Segoe UI',Avenir,Helvetica,Arial,sans-serif;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem;}
+
+  /* -- INSERTAR IMAGEN (squircle, fondo color2) -- */
+  .squircle{
+    background:var(--color1);
+    border:2px solid var(--color4);
+    border-radius:28%;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    color:var(--color4);
+    font-size:.85rem;font-weight:600;letter-spacing:.03em;
+    padding:1rem;
+  }
+
+  /* -- LOGO (icono + texto) -- */
+  .brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0;}
+  .brand svg{width:44px;height:44px;display:block;}
+  .brand span{font-weight:800;font-size:1.2rem;letter-spacing:-.01em;}
+
+  /* -- HEADER -- */
+  /* -- BLOQUE FIJO: header + pestañas + linea (siempre visible al bajar) -- */
+  .sticky-top{
+    position:sticky;top:0;z-index:20;
+    background:var(--color1);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  .top{display:flex;align-items:center;gap:1.4rem;padding-top:.8rem;padding-bottom:var(--gap);padding-left:2.5rem;padding-right:2.5rem;}
+  .search{
+    flex:1;display:flex;align-items:center;gap:.7rem;
+    background:var(--color4);
+    border-radius:999px;
+    padding:.2rem 1.1rem;height:46px;
+  }
+  .search svg{width:20px;height:20px;flex-shrink:0;stroke:var(--color1);}
+  .search input{
+    flex:1;border:none;outline:none;background:transparent;
+    font-size:.95rem;color:var(--color1);font-family:inherit;
+  }
+  .search input::placeholder{color:var(--color1);}
+
+  /* -- PESTAÑAS: Carta / Promociones / Como llegar -- */
+  .tabs-row{display:flex;align-items:center;gap:1rem;padding-left:2.5rem;padding-right:2.5rem;flex-wrap:wrap;}
+  .line{border-top:1px solid var(--color4);margin-top:var(--gap);}
+  main.wrap{padding-top:calc(var(--gap) * 2);} /* -- 2X: linea -> primer "Insertar imagen" -- */
+  .tab{
+    display:flex;align-items:center;gap:.5rem;
+    padding:.8rem 1.4rem;border-radius:999px;
+    font-size:.92rem;font-weight:600;color:var(--color1);
+    border:none;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .tab svg{width:18px;height:18px;stroke:var(--color1);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .tab.active{background:var(--color3);}
+  .tab:focus,.tab:active,.tab:focus-visible{outline:none;background:var(--color3);color:var(--color1);}
+
+  /* -- BANNER -- */
+  .banner{height:380px;width:100%;border-radius:56px;}
+
+  /* -- SECCIONES (promociones y menu, sin cajas detras) -- */
+  section{padding:3.2rem 0 1rem;}
+  section h2{font-size:1.7rem;font-weight:800;margin-bottom:1.6rem;letter-spacing:-.01em;}
+  .promo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;}
+  .promo-card{background:var(--color1);border:2px solid var(--color4);border-radius:32px;padding:1rem;} /* -- tarjeta squircle: borde color4, interior color1 -- */
+  .promo-card .squircle{aspect-ratio:1/1;margin-bottom:.9rem;}
+  .promo-card h3{font-size:.95rem;font-weight:700;color:var(--color4);}
+  .promo-card .price{color:var(--color4);font-weight:800;margin-top:.3rem;font-size:1.1rem;}
+
+  /* -- FOOTER -- */
+  footer{margin-top:4rem;padding-top:2.6rem;}
+  .how{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;padding-bottom:2.6rem;}
+  .how h3{font-size:1.5rem;font-weight:800;margin-bottom:1rem;color:var(--color3);}
+  .how p{font-size:.95rem;margin-bottom:.5rem;color:var(--color4);}
+  .how .squircle{height:200px;}
+  .copyright-bar{border-top:1px solid var(--color4);}
+  .copyright{display:flex;align-items:center;gap:.6rem;padding-top:1.2rem;padding-bottom:1.2rem;font-size:.85rem;color:var(--color4);}
+  .copyright svg{width:22px;height:22px;flex-shrink:0;}
+
+  /* -- MOVIL -- */
+  @media (max-width:760px){
+    .brand span{font-size:1rem;}
+    .top{gap:.8rem;}
+    .banner{height:220px;border-radius:36px;}
+    .promo-grid{grid-template-columns:repeat(3,1fr);}
+    .top,.tabs-row{padding-left:1.5rem;padding-right:1.5rem;}
+    .how{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .brand span{display:none;}
+    .promo-grid{grid-template-columns:repeat(2,1fr);}
+  }
 </style>
 </head>
 <body>
-<nav><div class="wrap"><span class="brand">BurgerLab</span><a class="back" href="index.html#trabajos">&larr; Volver al portafolio</a></div></nav>
-<header class="hero"><div class="wrap">
-  <div>
-    <div class="eyebrow">Hamburguesas artesanales</div>
-    <h1>Hamburguesas que se piden dos veces.</h1>
-    <p>Carne jugosa, pan recién horneado y salsas de la casa. Elige tu favorita y arma tu combo.</p>
-    <a class="btn" href="#carta">Ver carta</a><a class="btn g" href="#visita">Cómo llegar</a>
+
+<!-- -- ICONO LOGO (se reutiliza en header y footer) -- -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 100 100">
+    <path style="fill:var(--color4)" fill-rule="evenodd" d="M46.61 0.23L46.33 0.60L42.89 0.60L42.61 0.98L40.66 0.98L40.38 1.35L38.80 1.35L38.52 1.72L37.31 1.72L37.04 2.09L36.20 2.09L35.92 2.46L34.71 2.46L33.69 3.21L32.85 3.21L32.57 3.58L31.74 3.58L31.46 3.95L30.62 3.95L30.34 4.32L29.88 4.32L29.60 4.69L29.14 4.69L28.86 5.07L28.39 5.07L28.11 5.44L27.65 5.44L27.37 5.81L26.91 5.81L26.63 6.18L25.42 6.55L24.77 7.30L23.56 7.67L22.91 8.41L22.44 8.41L21.79 9.15L21.33 9.15L20.31 10.27L19.84 10.27L19.19 11.01L18.73 11.01L16.22 13.62L15.75 13.62L13.43 15.94L13.43 16.40L10.83 18.91L10.83 19.38L9.71 20.40L9.71 20.86L8.60 21.89L8.22 23.09L7.48 23.75L7.11 24.95L6.37 25.60L6.37 26.07L5.99 26.35L5.99 26.81L5.62 27.09L5.62 27.56L5.25 27.83L5.25 28.30L4.88 28.58L4.88 29.04L4.51 29.32L4.51 29.79L3.76 30.81L3.76 31.64L3.39 31.92L3.39 32.76L2.65 33.78L2.65 34.62L2.28 34.90L2.28 35.73L1.91 36.01L1.91 37.22L1.53 37.50L1.53 38.71L1.16 38.99L1.16 40.57L0.79 40.85L0.79 42.80L0.42 43.08L0.42 46.14L0.05 46.42L0.05 53.58L0.42 53.86L0.42 56.92L0.79 57.20L0.79 59.15L1.16 59.43L1.16 61.01L1.53 61.29L1.53 62.50L1.91 62.78L1.91 63.99L2.28 64.27L2.28 65.10L2.65 65.38L2.65 66.22L3.02 66.50L3.02 67.33L3.76 68.36L3.76 69.19L4.14 69.47L4.14 69.93L4.51 70.21L4.51 70.68L4.88 70.96L4.88 71.42L5.25 71.70L5.25 72.17L5.62 72.44L5.62 72.91L5.99 73.19L5.99 73.65L6.37 73.93L6.74 75.14L7.48 75.79L7.48 76.25L8.22 76.91L8.60 78.11L9.71 79.14L9.71 79.60L10.83 80.62L10.83 81.09L13.06 83.22L13.06 83.69L16.12 86.76L16.59 86.76L18.73 88.99L19.19 88.99L20.21 90.10L20.68 90.10L21.70 91.22L22.91 91.59L23.56 92.33L24.77 92.70L25.42 93.45L25.88 93.45L26.16 93.82L26.63 93.82L26.91 94.19L27.37 94.19L27.65 94.56L28.11 94.56L28.39 94.93L28.86 94.93L29.14 95.31L29.60 95.31L30.62 96.05L31.46 96.05L31.74 96.42L32.57 96.42L33.60 97.17L34.43 97.17L34.71 97.54L35.55 97.54L35.83 97.91L37.04 97.91L37.31 98.28L38.52 98.28L38.80 98.65L40.01 98.65L40.29 99.02L42.61 99.02L42.89 99.40L45.59 99.40L45.86 99.77L54.14 99.77L54.41 99.40L57.11 99.40L57.39 99.02L59.71 99.02L59.99 98.65L61.20 98.65L61.48 98.28L62.69 98.28L62.96 97.91L64.17 97.91L64.45 97.54L65.29 97.54L65.57 97.17L66.40 97.17L67.43 96.42L68.26 96.42L68.54 96.05L69.38 96.05L69.66 95.68L70.12 95.68L70.40 95.31L70.86 95.31L71.14 94.93L71.61 94.93L71.89 94.56L72.35 94.56L72.63 94.19L73.09 94.19L73.37 93.82L73.84 93.82L74.12 93.45L75.33 93.08L75.98 92.33L77.18 91.96L77.83 91.22L78.30 91.22L79.32 90.10L79.79 90.10L80.81 88.99L81.27 88.99L83.41 86.76L83.88 86.76L87.31 83.32L87.31 82.85L89.17 81.09L89.17 80.62L90.29 79.60L90.29 79.14L91.40 78.11L91.40 77.65L92.15 77.00L92.15 76.53L92.52 76.25L92.52 75.79L93.26 75.14L93.26 74.67L93.63 74.40L93.63 73.93L94.01 73.65L94.01 73.19L94.38 72.91L94.38 72.44L94.75 72.17L94.75 71.70L95.12 71.42L95.12 70.96L95.49 70.68L95.49 70.21L96.24 69.19L96.24 68.36L96.98 67.33L96.98 66.50L97.35 66.22L97.35 65.38L97.72 65.10L97.72 64.27L98.09 63.99L98.09 62.78L98.47 62.50L98.47 61.29L98.84 61.01L98.84 59.80L99.21 59.53L99.21 57.20L99.58 56.92L99.58 54.23L99.95 53.95L99.95 46.05L99.58 45.77L99.58 43.08L99.21 42.80L99.21 40.47L98.84 40.20L98.84 38.99L98.47 38.71L98.47 37.50L98.09 37.22L98.09 36.01L97.72 35.73L97.72 34.90L97.35 34.62L97.35 33.78L96.98 33.50L96.98 32.67L96.24 31.64L96.24 30.81L95.86 30.53L95.86 30.07L95.49 29.79L95.49 29.32L95.12 29.04L95.12 28.58L94.75 28.30L94.75 27.83L94.38 27.56L94.38 27.09L94.01 26.81L94.01 26.35L93.63 26.07L93.26 24.86L92.52 24.21L92.52 23.75L92.15 23.47L92.15 23.00L91.40 22.35L91.40 21.89L90.29 20.86L90.29 20.40L89.17 19.38L89.17 18.91L86.94 16.78L86.94 16.31L84.25 13.62L83.78 13.62L81.27 11.01L80.81 11.01L79.79 9.90L79.32 9.90L78.30 8.78L77.09 8.41L76.44 7.67L75.23 7.30L74.58 6.55L74.12 6.55L73.84 6.18L73.37 6.18L73.09 5.81L72.63 5.81L72.35 5.44L71.89 5.44L71.61 5.07L71.14 5.07L70.86 4.69L70.40 4.69L69.38 3.95L68.54 3.95L68.26 3.58L67.43 3.58L67.15 3.21L66.68 3.21L66.40 2.83L65.57 2.83L65.29 2.46L64.08 2.46L63.80 2.09L62.96 2.09L62.69 1.72L61.48 1.72L61.20 1.35L59.62 1.35L59.34 0.98L57.39 0.98L57.11 0.60L54.04 0.60L53.76 0.23ZM43.08 3.11L46.61 2.74L52.93 2.74L60.36 3.86L65.47 5.34L70.77 7.57L73.84 9.25L77.65 11.76L82.20 15.57L84.62 17.98L88.06 22.17L90.57 25.98L92.24 29.04L94.47 34.34L95.86 39.08L96.70 43.45L97.07 46.89L97.07 53.02L96.70 56.83L95.21 63.52L93.91 67.33L92.33 70.96L88.62 77.18L84.06 82.76L80.34 86.29L77.00 88.89L72.54 91.68L71.70 91.87L71.51 91.68L70.77 79.32L71.70 46.51L71.79 21.70L71.61 20.96L70.68 20.21L69.38 20.31L67.05 22.82L63.99 27.56L61.01 34.53L59.99 38.80L59.25 43.73L58.41 53.86L58.22 64.45L58.78 72.54L59.43 74.67L60.27 76.16L61.57 77.28L62.87 77.83L63.80 78.76L64.73 81.09L65.01 85.36L64.36 94.66L64.08 95.31L55.81 97.17L52.09 97.44L47.26 97.44L40.66 96.61L40.38 96.14L40.10 94.10L39.36 83.04L39.36 78.49L40.10 71.61L40.94 68.82L41.68 67.24L42.98 65.57L46.70 62.22L47.72 60.92L48.28 59.71L48.65 52.46L48.56 38.89L48.19 24.95L47.72 24.21L46.98 23.84L46.42 23.84L45.68 24.21L45.21 24.95L45.21 49.49L44.84 50.33L43.91 50.98L43.26 50.98L42.52 50.60L41.96 49.77L41.96 25.42L41.78 24.58L41.22 24.02L40.20 23.84L39.27 24.21L38.80 24.95L38.80 49.58L38.34 50.51L37.59 50.98L36.20 50.70L35.55 49.67L35.55 25.14L35.36 24.58L34.53 23.93L33.78 23.84L32.95 24.12L32.39 24.95L32.39 49.77L32.11 50.42L30.99 51.16L29.60 50.70L29.14 49.67L29.14 25.05L28.76 24.30L28.02 23.84L27.00 23.93L26.16 25.05L25.70 43.82L25.70 53.11L26.07 59.80L27.46 62.04L31.18 65.38L32.39 66.87L33.41 68.91L34.25 71.70L34.90 77.37L34.99 82.30L34.62 89.64L33.97 94.66L33.32 94.66L29.04 92.80L26.07 91.22L22.44 88.89L17.43 84.80L12.59 79.60L8.32 73.28L5.53 67.43L3.76 61.94L2.56 55.53L2.28 51.07L2.56 44.84L3.30 40.20L4.04 37.22L5.25 33.50L7.48 28.49L9.99 24.21L12.96 20.12L14.54 18.26L19.10 13.89L23.00 10.92L26.35 8.78L31.09 6.46L34.80 5.07L37.59 4.23Z"/>
+  </symbol>
+</svg>
+
+<!-- -- HEADER: logo + buscador -- -->
+<div class="sticky-top">
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <svg><use href="#logo"/></svg>
+      <span>Hamburgueseria</span>
+    </div>
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input type="text" placeholder="Buscar...">
+    </label>
   </div>
-  <div class="ph"><img src="hamburgueseria.webp" alt="Hamburguesa con queso y lechuga"></div>
-</div></header>
-<section id="carta"><div class="wrap">
-  <h2>Nuestra carta</h2>
-  <div class="grid">
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Clásica<b>S/ 16</b></h3><p>Carne, queso, lechuga y tomate.</p></div></article>
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Doble queso<b>S/ 22</b></h3><p>Doble carne y doble cheddar.</p></div></article>
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>BBQ<b>S/ 21</b></h3><p>Tocino crocante y salsa BBQ.</p></div></article>
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Pollo crispy<b>S/ 19</b></h3><p>Pechuga crocante y mayonesa.</p></div></article>
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Papas fritas<b>S/ 9</b></h3><p>Porción grande con cremas.</p></div></article>
-    <article class="card"><div class="ph"><span>IMAGEN: insertar</span></div><div class="t"><h3>Malteada<b>S/ 12</b></h3><p>Vainilla, chocolate o fresa.</p></div></article>
+</header>
+
+<!-- -- PESTAÑAS -- -->
+<div class="wrap tabs-row">
+    <button class="tab active">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M12 5v14M6 9h3M6 12h3M15 9h3M15 12h3"/></svg>
+      Carta
+    </button>
+    <button class="tab active">
+      <svg viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 .3 1.5 1 2 2 2-.5-3 0-5 1-8z"/></svg>
+      Promociones
+    </button>
+    <button class="tab active">
+      <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      Cómo llegar
+    </button>
   </div>
-</div></section>
-<section id="visita"><div class="wrap">
-  <h2>Visítanos</h2>
-  <div class="visit">
-    <div class="box"><h3>Dirección y horarios</h3><p>Av. Principal 123, tu ciudad</p><p>Lunes a domingo: 12:00 pm a 11:00 pm</p><p>Delivery disponible</p></div>
-    <div class="ph"><span>MAPA: insertar</span></div>
+<!-- -- LINEA color4 -- -->
+<div class="line"></div>
+</div>
+
+<main class="wrap">
+  <!-- -- BANNER -- -->
+  <div class="squircle banner">Insertar imagen</div>
+
+  <!-- -- PROMOCIONES -- -->
+  <section id="promociones">
+    <h2>Promociones</h2>
+    <div class="promo-grid">
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Doble Clásica</h3><div class="price">S/ 19.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Crispy Chicken</h3><div class="price">S/ 17.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Familiar</h3><div class="price">S/ 49.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Parrillero</h3><div class="price">S/ 24.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Nuggets</h3><div class="price">S/ 14.90</div></div>
+    </div>
+  </section>
+
+  <!-- -- MENU -- -->
+  <section id="menu">
+    <h2>Carta</h2>
+    <div class="promo-grid">
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Hamburguesa Clásica</h3><div class="price">S/ 12.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Pollo Crispy</h3><div class="price">S/ 11.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Papas Grandes</h3><div class="price">S/ 6.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Gaseosa</h3><div class="price">S/ 4.90</div></div>
+      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Helado</h3><div class="price">S/ 5.90</div></div>
+    </div>
+  </section>
+</main>
+
+<!-- -- FOOTER: Como llegar + copyright con icono -- -->
+<footer>
+  <div class="wrap how">
+    <div>
+      <h3>Cómo llegar</h3>
+      <p>Av. Ejemplo 123, Lima</p>
+      <p>Lunes a domingo: 10:00 a.m. - 11:00 p.m.</p>
+      <p>Teléfono: (01) 000 0000</p>
+    </div>
+    <div class="squircle">Insertar imagen</div>
   </div>
-</div></section>
-<footer><div class="wrap"><span>BurgerLab. Página de demostración.</span><a href="index.html#trabajos">&larr; Volver al portafolio</a></div></footer>
+  <div class="copyright-bar">
+    <div class="wrap copyright">
+      <svg><use href="#logo"/></svg>
+      <span>2026 Hamburgueseria. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
