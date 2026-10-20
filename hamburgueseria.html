@@ -19,6 +19,8 @@
     --color1:hsl(0,0%,15%);
     --color3:hsl(315,60%,70%);
     --color4:hsl(315,60%,95%);
+    --wa:hsl(135,60%,70%); /* -- verde unico de los 2 WhatsApp -- */
+    --x:1.2rem; /* -- x: medida de referencia (separacion del carrusel); el catalogo 4x3 usa 2x -- */
     --gap:1.25rem; /* -- X: misma separacion buscador/pestañas/linea/banner -- */
     color-scheme:dark;
   }
@@ -61,11 +63,25 @@
   }
   .top{display:flex;align-items:center;gap:1.4rem;padding-top:.8rem;padding-bottom:var(--gap);padding-left:2.5rem;padding-right:2.5rem;}
   .search{
-    flex:1;display:flex;align-items:center;gap:.7rem;
+    width:100%;display:flex;align-items:center;gap:.7rem;
     background:var(--color4);
     border-radius:999px;
     padding:.2rem 1.1rem;height:46px;
   }
+
+  /* -- BUSCADOR: resultados debajo, mismo ancho que la barra -- */
+  [hidden]{display:none !important;}
+  .search-wrap{flex:1;position:relative;min-width:0;}
+  .results{
+    position:absolute;left:0;right:0;top:calc(100% + .6rem);z-index:30;
+    background:var(--color1);border:2px solid var(--color4);border-radius:28px;
+    padding:.2rem 1.2rem;
+  }
+  .res{display:flex;align-items:center;gap:1.2rem;padding:.9rem 0;border-bottom:1px solid var(--color4);}
+  .res:last-child{border-bottom:none;}
+  .res .squircle{width:96px;height:96px;flex-shrink:0;font-size:.7rem;padding:.4rem;}
+  .res-name{font-size:1rem;color:var(--color4);}
+  .res-price{font-weight:800;margin-top:.5rem;color:var(--color4);}
   .search svg{width:20px;height:20px;flex-shrink:0;stroke:var(--color1);}
   .search input{
     flex:1;border:none;outline:none;background:transparent;
@@ -81,30 +97,123 @@
     display:flex;align-items:center;gap:.5rem;
     padding:.8rem 1.4rem;border-radius:999px;
     font-size:.92rem;font-weight:600;color:var(--color1);
-    border:none;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;
   }
   .tab svg{width:18px;height:18px;stroke:var(--color1);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
-  .tab.active{background:var(--color3);}
-  .tab:focus,.tab:active,.tab:focus-visible{outline:none;background:var(--color3);color:var(--color1);}
+  .tab{background:var(--color3);outline:none;}
+  .tab:hover,.tab.sel{color:var(--color4);} /* -- hover y seleccionada: la letra pasa de color1 a color4 -- */
+  .tab:hover svg,.tab.sel svg{stroke:var(--color4);}
+
+  /* -- BOTON "Volver al portafolio": a la derecha de las pestañas -- */
+  .volver{
+    margin-left:auto;display:flex;align-items:center;
+    padding:.8rem 1.4rem;border-radius:999px;
+    border:1px solid var(--color4);background:transparent;color:var(--color4);
+    font-size:.92rem;font-weight:500;white-space:nowrap;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .volver:hover{border-color:var(--color3);color:var(--color3);}
 
   /* -- BANNER -- */
   .banner{height:380px;width:100%;border-radius:56px;}
 
   /* -- SECCIONES (promociones y menu, sin cajas detras) -- */
   section{padding:3.2rem 0 1rem;}
-  section h2{font-size:1.7rem;font-weight:800;margin-bottom:1.6rem;letter-spacing:-.01em;}
-  .promo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;}
-  .promo-card{background:var(--color1);border:2px solid var(--color4);border-radius:32px;padding:1rem;} /* -- tarjeta squircle: borde color4, interior color1 -- */
+  section h2{font-size:1.7rem;font-weight:800;letter-spacing:-.01em;}
+  .sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.6rem;}
+  .ver-todos{display:flex;align-items:center;gap:.8rem;color:var(--color3);font-weight:800;font-size:1rem;cursor:pointer;}
+  .ver-todos span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;}
+  .ver-todos svg{width:24px;height:24px;stroke:var(--color3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .catalog{display:none;grid-template-columns:repeat(4,1fr);gap:calc(var(--x) * 2);} /* -- 2x la separacion del carrusel (1.2rem) -- */
+  /* -- CONTROLES (solo en vista carta/promociones): Ordenar por + Vista -- */
+  .sec-head{flex-wrap:wrap;gap:1rem;}
+  .controles{display:none;align-items:center;gap:2rem;color:var(--color4);font-weight:700;font-size:1rem;}
+  main[data-vista="promociones"] #promociones .controles,main[data-vista="carta"] #carta .controles{display:flex;}
+  main[data-vista="promociones"] #promociones .sec-head,main[data-vista="carta"] #carta .sec-head{align-items:flex-start;margin-bottom:calc(var(--x) * 3);} /* -- titulo alineado arriba; 3x con los productos -- */
+  .controles button{font-family:inherit;color:var(--color4);background:transparent;border:none;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent;}
+  .controles svg{width:22px;height:22px;stroke:var(--color4);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+  .controles{align-items:flex-start;gap:2.5rem;}
+  .lbl{display:block;font-size:.85rem;font-weight:600;color:var(--color4);}
+  .ord-wrap{position:relative;}
+  .ord-btn{display:flex;flex-direction:column;align-items:stretch;gap:.4rem;min-width:260px;padding:0;text-align:left;}
+  .ord-btn .fila{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.4rem;border-bottom:1px solid var(--color4);}
+  .ord-valor{font-size:1.05rem;font-weight:800;color:var(--color4);}
+  .ord-btn .fila svg{width:30px;height:30px;transition:transform .2s;} /* -- icono mas grande -- */
+  .ord-btn.abierto .lbl,.ord-btn.abierto .ord-valor{color:var(--color3);} /* -- en uso: color4 -> color3 -- */
+  .ord-btn.abierto .fila svg{stroke:var(--color3);transform:rotate(180deg);}
+  .ord-menu{position:absolute;right:0;top:calc(100% + .6rem);z-index:15;width:100%;min-width:260px;background:var(--color1);border:2px solid var(--color4);border-radius:24px;padding:.2rem 1.2rem;}
+  .ord-menu button{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:.85rem 0;border-bottom:1px solid var(--color4);font-size:.95rem;font-weight:700;}
+  .ord-menu button:last-child{border-bottom:none;}
+  .ord-menu button .ck{display:none;width:20px;height:20px;}
+  .ord-menu button.sel{color:var(--color3);} /* -- elegido: color3 + check -- */
+  .ord-menu button.sel .ck{display:block;stroke:var(--color3);}
+  .vista{display:flex;flex-direction:column;align-items:flex-start;gap:calc(var(--x) * 1.5);} /* -- "Vista:" -> iconos = 1.5x -- */
+  .vista{order:-1;} /* -- Vista: queda a la izquierda de Ordenar por: -- */
+  .v-btns{display:flex;gap:.4rem;}
+  .v-btn{width:40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;padding:0;}
+  .v-btn.sel{background:var(--color3);}
+  /* -- ESCALA (solo escritorio): "Vista:" mide lo mismo que sus 2 iconos (--u lo calcula el JS),
+        Ordenar por: y Recomendado crecen igual, y el titulo igual de alto que el bloque (--h2) -- */
+  @media (min-width:900px){
+    .lbl{font-size:var(--u,.85rem);line-height:1.1;}
+    .ord-btn{min-width:0;}
+    .ord-valor{font-size:var(--u,.85rem);} /* -- mismo tamaño que "Ordenar por:" (sigue en negrita) -- */
+    .ord-btn .fila svg{width:calc(var(--u,.85rem) * 1.85);height:calc(var(--u,.85rem) * 1.85);}
+    main[data-vista="carta"] #carta h2,main[data-vista="promociones"] #promociones h2{line-height:1;}
+  }
+  /* -- titulo Carta/Promociones: letra de la franja de pestañas (.92rem) x 3 (doble de ancho y alto), negrita -- */
+  main[data-vista="carta"] #carta h2,main[data-vista="promociones"] #promociones h2{font-size:calc(.92rem * 3);font-weight:800;}
+  /* vista lista: una por fila */
+  .catalog.lista{grid-template-columns:repeat(2,1fr);} /* -- vista larga: 2 en 2 -- */
+  .catalog.lista .promo-card{display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto auto 1fr;column-gap:1.4rem;}
+  .catalog.lista .promo-card .squircle{grid-column:1;grid-row:1 / span 3;margin-bottom:0;}
+  .catalog.lista .promo-card h3,.catalog.lista .promo-card .desc,.catalog.lista .promo-card .price{grid-column:2;}
+  .catalog.lista .promo-card h3{font-size:1.1rem;}
+  .catalog.lista .promo-card .price{align-self:end;margin-top:0;}
+  .top .brand{cursor:pointer;}
+  /* -- VISTAS: inicio / promociones / carta (4x3 productos) -- */
+  main[data-vista="promociones"] .banner,main[data-vista="promociones"] #carta,
+  main[data-vista="carta"] .banner,main[data-vista="carta"] #promociones{display:none;}
+  main[data-vista="promociones"] #promociones .catalog,main[data-vista="carta"] #carta .catalog{display:grid;}
+  main[data-vista="promociones"] #promociones .carousel,main[data-vista="carta"] #carta .carousel,
+  main[data-vista="promociones"] #promociones .ver-todos,main[data-vista="carta"] #carta .ver-todos{display:none;}
+  main[data-vista="promociones"] #promociones,main[data-vista="carta"] #carta{padding-top:0;}
+  /* -- CARRUSEL INFINITO: se ven 4, hay 12, flechas color3 sin tope -- */
+  .carousel{--vis:4;--cg:1.2rem;position:relative;container-type:inline-size;}
+  .viewport{overflow:hidden;}
+  .track{display:flex;gap:var(--cg);transition:transform .35s ease;will-change:transform;}
+  .track .promo-card{flex:0 0 calc((100% - (var(--vis) - 1) * var(--cg)) / var(--vis));min-width:0;}
+  .arrow{
+    position:absolute;z-index:5;
+    /* -- justo encima del titulo: cerca pero encima -- */
+    top:calc((100cqw - (var(--vis) - 1) * var(--cg)) / var(--vis) - 12px);
+    transform:translateY(-100%);
+    width:38px;height:108px;border-radius:12px;border:none;
+    background:var(--color3);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    outline:none;-webkit-tap-highlight-color:transparent;
+  }
+  .arrow svg{width:22px;height:44px;stroke:var(--color4);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+  .arrow svg path{vector-effect:non-scaling-stroke;}
+  .arrow.prev{left:0;transform:translate(-50%,-100%);}
+  .arrow.next{right:0;transform:translate(50%,-100%);}
+  .promo-card{background:var(--color1);border:2px solid var(--color4);border-radius:32px;padding:1rem;display:flex;flex-direction:column;} /* -- tarjeta squircle: borde color4, interior color1 -- */
   .promo-card .squircle{aspect-ratio:1/1;margin-bottom:.9rem;}
   .promo-card h3{font-size:.95rem;font-weight:700;color:var(--color4);}
-  .promo-card .price{color:var(--color4);font-weight:800;margin-top:.3rem;font-size:1.1rem;}
+  .promo-card .desc{color:var(--color4);font-size:.82rem;line-height:1.35;margin-top:.35rem;margin-bottom:.6rem;}
+  .promo-card .price{color:var(--color4);font-weight:800;margin-top:auto;font-size:1.1rem;} /* -- precio siempre abajo, alineado -- */
 
   /* -- FOOTER -- */
   footer{margin-top:4rem;padding-top:2.6rem;}
-  .how{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;padding-bottom:2.6rem;}
-  .how h3{font-size:1.5rem;font-weight:800;margin-bottom:1rem;color:var(--color3);}
-  .how p{font-size:.95rem;margin-bottom:.5rem;color:var(--color4);}
-  .how .squircle{height:200px;}
+  .how{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;padding-bottom:2.6rem;}
+  .how h3{font-size:clamp(2.4rem,13vw,7rem);line-height:1.1;font-weight:800;margin-bottom:2.5rem;color:var(--color3);}
+  .how p{font-size:clamp(.95rem,4vw,1.9rem);margin-bottom:.5rem;color:var(--color4);}
+  /* -- WHATSAPP: numero del footer + boton flotante -- */
+  .wa-num{display:inline-flex;align-items:center;gap:.8rem;margin-top:.6rem;color:var(--color4);font-weight:800;font-size:clamp(1.6rem,8vw,4rem);letter-spacing:-.01em;}
+  .wa-num svg{width:.87em;height:.87em;flex-shrink:0;} /* -- respaldo; el JS lo ajusta a 1.2x el alto de los digitos y lo centra -- */
+  .disc{fill:var(--wa);} .bub{fill:var(--color1);} .tel{fill:var(--wa);} /* -- icono WhatsApp: disco verde, burbuja oscura, telefono verde (los 2) -- */
+  .wa-flotante{position:fixed;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:none;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
+  .wa-flotante svg{width:100%;height:100%;display:block;}
   .copyright-bar{border-top:1px solid var(--color4);}
   .copyright{display:flex;align-items:center;gap:.6rem;padding-top:1.2rem;padding-bottom:1.2rem;font-size:.85rem;color:var(--color4);}
   .copyright svg{width:22px;height:22px;flex-shrink:0;}
@@ -114,13 +223,18 @@
     .brand span{font-size:1rem;}
     .top{gap:.8rem;}
     .banner{height:220px;border-radius:36px;}
-    .promo-grid{grid-template-columns:repeat(3,1fr);}
+    .carousel{--vis:3;}
+    .catalog{grid-template-columns:repeat(3,1fr);}
+    .catalog.lista{grid-template-columns:1fr;}
     .top,.tabs-row{padding-left:1.5rem;padding-right:1.5rem;}
     .how{grid-template-columns:1fr;}
   }
   @media (max-width:520px){
     .brand span{display:none;}
-    .promo-grid{grid-template-columns:repeat(2,1fr);}
+    .carousel{--vis:2;}
+    .catalog{grid-template-columns:repeat(2,1fr);gap:1.6rem;}
+    .catalog.lista{grid-template-columns:1fr;}
+    .catalog.lista .promo-card{grid-template-columns:110px 1fr;}
   }
 </style>
 </head>
@@ -141,71 +255,132 @@
       <svg><use href="#logo"/></svg>
       <span>Hamburgueseria</span>
     </div>
-    <label class="search">
+    <div class="search-wrap">
+      <label class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      <input type="text" placeholder="Buscar...">
-    </label>
+      <input id="buscar" type="text" placeholder="Buscar..." autocomplete="off">
+      </label>
+      <div class="results" id="resultados" hidden></div>
+    </div>
   </div>
 </header>
 
 <!-- -- PESTAÑAS -- -->
 <div class="wrap tabs-row">
-    <button class="tab active">
+    <button class="tab" data-tab="carta">
       <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M12 5v14M6 9h3M6 12h3M15 9h3M15 12h3"/></svg>
       Carta
     </button>
-    <button class="tab active">
+    <button class="tab" data-tab="promociones">
       <svg viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 .3 1.5 1 2 2 2-.5-3 0-5 1-8z"/></svg>
       Promociones
     </button>
-    <button class="tab active">
+    <button class="tab" data-tab="llegar">
       <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
       Cómo llegar
     </button>
+    <a class="volver" href="#">← Volver al portafolio</a>
   </div>
 <!-- -- LINEA color4 -- -->
 <div class="line"></div>
 </div>
 
-<main class="wrap">
+<main class="wrap" data-vista="inicio">
   <!-- -- BANNER -- -->
-  <div class="squircle banner">Insertar imagen</div>
+  <div class="squircle banner">Insertar imagen 0</div>
 
   <!-- -- PROMOCIONES -- -->
   <section id="promociones">
-    <h2>Promociones</h2>
-    <div class="promo-grid">
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Doble Clásica</h3><div class="price">S/ 19.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Crispy Chicken</h3><div class="price">S/ 17.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Familiar</h3><div class="price">S/ 49.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Parrillero</h3><div class="price">S/ 24.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Combo Nuggets</h3><div class="price">S/ 14.90</div></div>
+    <div class="sec-head"><h2>Promociones</h2><a class="ver-todos" href="#" data-ir="promociones"><span>Ver todos</span><svg viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a><div class="controles">
+        <div class="ord-wrap">
+          <button class="ord-btn"><span class="lbl">Ordenar por:</span><span class="fila"><span class="ord-valor">Recomendado</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="ord-menu" hidden>
+            <button class="sel" data-o="orig"><span>Recomendado</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="pmin"><span>Menor a mayor precio</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="pmax"><span>Mayor a menor precio</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="az"><span>A - Z</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="za"><span>Z - A</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+          </div>
+        </div>
+        <div class="vista"><span class="lbl">Vista:</span>
+          <div class="v-btns">
+          <button class="v-btn sel" data-v="grid" aria-label="Vista en cuadricula"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="7" height="14" rx="1.5"/><rect x="13" y="5" width="7" height="14" rx="1.5"/></svg></button>
+          <button class="v-btn" data-v="lista" aria-label="Vista en lista"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/></svg></button>
+          </div>
+        </div>
+      </div></div>
+    <div class="carousel">
+      <button class="arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M15 4l-8 8 8 8"/></svg></button>
+      <div class="viewport"><div class="track">
+        <div class="promo-card"><div class="squircle">Insertar imagen 1</div><h3>Combo Doble</h3><p class="desc">Dos hamburguesas jugosas con papas medianas y bebida.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 2</div><h3>Combo Triple</h3><p class="desc">Tres hamburguesas, papas grandes y bebida para compartir.</p><div class="price">S/ 29.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 3</div><h3>Combo Familiar</h3><p class="desc">Cuatro hamburguesas, papas para todos y bebida grande.</p><div class="price">S/ 39.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 4</div><h3>Combo Super</h3><p class="desc">Hamburguesa especial, nuggets, papas y bebida.</p><div class="price">S/ 49.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 5</div><h3>Combo Ultra</h3><p class="desc">Doble hamburguesa, pollo crispy, papas grandes y dos bebidas.</p><div class="price">S/ 59.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 6</div><h3>Combo Clásico</h3><p class="desc">Hamburguesa clásica con papas pequeñas y gaseosa.</p><div class="price">S/ 9.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 7</div><h3>Combo Crispy</h3><p class="desc">Hamburguesa de pollo crocante, papas medianas y bebida.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 8</div><h3>Combo Parrillero</h3><p class="desc">Hamburguesa a la parrilla con papas, aros de cebolla y bebida.</p><div class="price">S/ 29.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 9</div><h3>Combo Nuggets</h3><p class="desc">Diez nuggets de pollo con papas, salsa y bebida.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 10</div><h3>Combo Pareja</h3><p class="desc">Dos hamburguesas, papas para compartir y dos bebidas.</p><div class="price">S/ 39.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 11</div><h3>Combo Amigos</h3><p class="desc">Cuatro hamburguesas, nuggets, papas y cuatro bebidas.</p><div class="price">S/ 59.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 12</div><h3>Combo Mega</h3><p class="desc">Triple carne, pollo crispy, papas grandes y bebida grande.</p><div class="price">S/ 49.90</div></div>
+      </div></div>
+      <button class="arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M9 4l8 8-8 8"/></svg></button>
     </div>
+    <div class="catalog"></div>
   </section>
 
   <!-- -- MENU -- -->
-  <section id="menu">
-    <h2>Carta</h2>
-    <div class="promo-grid">
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Hamburguesa Clásica</h3><div class="price">S/ 12.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Pollo Crispy</h3><div class="price">S/ 11.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Papas Grandes</h3><div class="price">S/ 6.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Gaseosa</h3><div class="price">S/ 4.90</div></div>
-      <div class="promo-card"><div class="squircle">Insertar imagen</div><h3>Helado</h3><div class="price">S/ 5.90</div></div>
+  <section id="carta">
+    <div class="sec-head"><h2>Carta</h2><a class="ver-todos" href="#" data-ir="carta"><span>Ver todos</span><svg viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a><div class="controles">
+        <div class="ord-wrap">
+          <button class="ord-btn"><span class="lbl">Ordenar por:</span><span class="fila"><span class="ord-valor">Recomendado</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="ord-menu" hidden>
+            <button class="sel" data-o="orig"><span>Recomendado</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="pmin"><span>Menor a mayor precio</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="pmax"><span>Mayor a menor precio</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="az"><span>A - Z</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+            <button data-o="za"><span>Z - A</span><svg class="ck" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+          </div>
+        </div>
+        <div class="vista"><span class="lbl">Vista:</span>
+          <div class="v-btns">
+          <button class="v-btn sel" data-v="grid" aria-label="Vista en cuadricula"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="7" height="14" rx="1.5"/><rect x="13" y="5" width="7" height="14" rx="1.5"/></svg></button>
+          <button class="v-btn" data-v="lista" aria-label="Vista en lista"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/></svg></button>
+          </div>
+        </div>
+      </div></div>
+    <div class="carousel">
+      <button class="arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M15 4l-8 8 8 8"/></svg></button>
+      <div class="viewport"><div class="track">
+        <div class="promo-card"><div class="squircle">Insertar imagen 13</div><h3>Hamburguesa de Pollo</h3><p class="desc">Pechuga de pollo crocante con lechuga, tomate y mayonesa.</p><div class="price">S/ 9.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 14</div><h3>Hamburguesa de Carne</h3><p class="desc">Carne de res a la parrilla con lechuga, tomate y cebolla.</p><div class="price">S/ 9.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 15</div><h3>Doble con Queso</h3><p class="desc">Doble carne con doble queso derretido y salsa de la casa.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 16</div><h3>Parrillera</h3><p class="desc">Carne flameada con cebolla caramelizada y salsa BBQ.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 17</div><h3>Bacon King</h3><p class="desc">Doble carne, tocino crocante, queso cheddar y salsa ahumada.</p><div class="price">S/ 29.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 18</div><h3>Hamburguesa Clásica</h3><p class="desc">Carne, queso, pepinillos, ketchup y mostaza en pan suave.</p><div class="price">S/ 9.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 19</div><h3>Cheeseburger</h3><p class="desc">Carne a la parrilla con queso cheddar derretido.</p><div class="price">S/ 9.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 20</div><h3>Crispy Chicken</h3><p class="desc">Pollo apanado crujiente con lechuga y salsa cremosa.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 21</div><h3>Hamburguesa Veggie</h3><p class="desc">Medallón de vegetales con palta, tomate y lechuga.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 22</div><h3>Hamburguesa Hawaiana</h3><p class="desc">Carne con piña a la plancha, queso y jamón.</p><div class="price">S/ 19.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 23</div><h3>BBQ Ranch</h3><p class="desc">Carne, tocino, aros de cebolla y salsa BBQ ranch.</p><div class="price">S/ 29.90</div></div>
+        <div class="promo-card"><div class="squircle">Insertar imagen 24</div><h3>Triple Carne</h3><p class="desc">Tres carnes a la parrilla con queso y salsa especial.</p><div class="price">S/ 29.90</div></div>
+      </div></div>
+      <button class="arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M9 4l8 8-8 8"/></svg></button>
     </div>
+    <div class="catalog"></div>
   </section>
 </main>
 
 <!-- -- FOOTER: Como llegar + copyright con icono -- -->
 <footer>
-  <div class="wrap how">
+  <div class="wrap how" id="llegar">
     <div>
       <h3>Cómo llegar</h3>
-      <p>Av. Ejemplo 123, Lima</p>
-      <p>Lunes a domingo: 10:00 a.m. - 11:00 p.m.</p>
-      <p>Teléfono: (01) 000 0000</p>
+      <p>Av. Principal 123, tu ciudad</p>
+      <p>Lunes a domingo: 10:00 a.m. - 10:00 p.m.</p>
+      <a class="wa-num" data-wa href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" style="fill:var(--wa)" d="M20.463 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413ZM17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg><span data-wa-texto></span></a>
     </div>
-    <div class="squircle">Insertar imagen</div>
   </div>
   <div class="copyright-bar">
     <div class="wrap copyright">
@@ -215,5 +390,202 @@
   </div>
 </footer>
 
+<a class="wa-flotante" data-wa href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="disc" cx="12" cy="12" r="12"/><g transform="translate(4.77 4.86) scale(.6)"><path class="bub" d="M20.463 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/><path class="tel" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></g></svg></a>
+
+<script>
+  /* -- NUMERO DE WHATSAPP DEL CLIENTE (cambiar solo estas 2 lineas) -- */
+  var WHATSAPP_NUMERO='51903307861'; /* con codigo de pais, sin + ni espacios */
+  var WHATSAPP_VISIBLE='903 307 861'; /* como se muestra en la pagina */
+  document.querySelectorAll('[data-wa]').forEach(function(a){a.href='https://wa.me/'+WHATSAPP_NUMERO;});
+  document.querySelectorAll('[data-wa-texto]').forEach(function(t){t.textContent=WHATSAPP_VISIBLE;});
+
+  function norm(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+
+  /* -- DATOS PARA EL BUSCADOR (los 24 productos reales, antes de clonar) -- */
+  var productos=[].slice.call(document.querySelectorAll('.track .promo-card')).map(function(c){
+    var nombre=c.querySelector('h3').textContent;
+    return {nombre:nombre,precio:c.querySelector('.price').textContent,img:c.querySelector('.squircle').textContent,n:norm(nombre)};
+  });
+
+  /* -- CARRUSEL INFINITO: de 1 en 1, sin tope en ningun lado -- */
+  var CL=4;
+  document.querySelectorAll('.carousel').forEach(function(c){
+    var track=c.querySelector('.track');
+    var reales=[].slice.call(track.children);
+    c._reales=reales;
+    var N=reales.length, p=CL, ocupado=false;
+    function clon(el){var k=el.cloneNode(true);k.setAttribute('aria-hidden','true');return k;}
+    reales.slice(-CL).forEach(function(el){track.insertBefore(clon(el),reales[0]);});
+    reales.slice(0,CL).forEach(function(el){track.appendChild(clon(el));});
+    function paso(){
+      var w=track.children[0].getBoundingClientRect().width;
+      var g=parseFloat(getComputedStyle(track).columnGap)||0;
+      return w+g;
+    }
+    function poner(anim){
+      track.style.transition=anim?'':'none';
+      track.style.transform='translateX('+(-p*paso())+'px)';
+      if(!anim){track.offsetHeight;track.style.transition='';}
+    }
+    function fin(){
+      if(p>=CL+N){p-=N;poner(false);}
+      else if(p<CL){p+=N;poner(false);}
+      ocupado=false;
+    }
+    function ir(d){
+      if(ocupado)return;
+      ocupado=true;p+=d;poner(true);
+      setTimeout(fin,380);
+    }
+    poner(false);
+    window.addEventListener('resize',function(){poner(false);});
+    c.querySelector('.prev').addEventListener('click',function(){ir(-1);});
+    c.querySelector('.next').addEventListener('click',function(){ir(1);});
+    var x0=null;
+    track.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    track.addEventListener('touchend',function(e){
+      if(x0===null)return;
+      var dx=e.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>50)ir(dx<0?1:-1);
+    });
+  });
+
+  /* -- VISTAS: pestañas, "Ver todos", logo y Como llegar -- */
+  var main=document.querySelector('main');
+  document.querySelectorAll('.carousel').forEach(function(c){
+    var cat=c.parentNode.querySelector('.catalog');
+    c._reales.forEach(function(el){cat.appendChild(el.cloneNode(true));});
+  });
+  /* -- ORDENAR POR + VISTA (cuadricula / lista) en cada categoria -- */
+  var secciones=[].slice.call(document.querySelectorAll('section')).filter(function(x){return x.querySelector('.catalog');});
+  secciones.forEach(function(sec){
+    var cat=sec.querySelector('.catalog');
+    [].slice.call(cat.children).forEach(function(el,i){el.setAttribute('data-i',i);});
+    var menu=sec.querySelector('.ord-menu'), btn=sec.querySelector('.ord-btn'), valor=sec.querySelector('.ord-valor');
+    var ops=sec.querySelectorAll('.ord-menu button'), vb=sec.querySelectorAll('.v-btn');
+    function precio(el){return parseFloat(el.querySelector('.price').textContent.replace(/[^0-9.]/g,''));}
+    function nombre(el){return norm(el.querySelector('h3').textContent);}
+    function ordenar(o){
+      var arr=[].slice.call(cat.children);
+      arr.sort(function(a,b){
+        if(o==='az')return nombre(a).localeCompare(nombre(b),'es');
+        if(o==='za')return nombre(b).localeCompare(nombre(a),'es');
+        if(o==='pmin')return precio(a)-precio(b)||(a.getAttribute('data-i')-b.getAttribute('data-i'));
+        if(o==='pmax')return precio(b)-precio(a)||(a.getAttribute('data-i')-b.getAttribute('data-i'));
+        return a.getAttribute('data-i')-b.getAttribute('data-i');
+      });
+      arr.forEach(function(el){cat.appendChild(el);});
+      ops.forEach(function(x){var on=x.getAttribute('data-o')===o;x.classList.toggle('sel',on);if(on)valor.textContent=x.querySelector('span').textContent;});
+    }
+    function abierto(v){menu.hidden=!v;btn.classList.toggle('abierto',v);}
+    btn.addEventListener('click',function(e){e.stopPropagation();abierto(menu.hidden);});
+    ops.forEach(function(x){x.addEventListener('click',function(e){e.stopPropagation();ordenar(x.getAttribute('data-o'));abierto(false);});});
+    vb.forEach(function(x){x.addEventListener('click',function(){
+      cat.classList.toggle('lista',x.getAttribute('data-v')==='lista');
+      vb.forEach(function(y){y.classList.toggle('sel',y===x);});
+    });});
+    document.addEventListener('click',function(){abierto(false);});
+    sec._reset=function(){
+      ordenar('orig');abierto(false);cat.classList.remove('lista');
+      vb.forEach(function(y){y.classList.toggle('sel',y.getAttribute('data-v')==='grid');});
+    };
+  });
+  function reiniciar(){secciones.forEach(function(sc){sc._reset();});document.querySelectorAll('section h2').forEach(function(h){h.style.transform='';h.style.transformOrigin='';});}
+
+  /* -- AJUSTE DE TAMAÑOS (escritorio) -- */
+  function limpiarTitulos(){document.querySelectorAll('section h2').forEach(function(h){h.style.transform='';h.style.transformOrigin='';});}
+  function linea(el){ /* y de la linea base del texto */
+    var m=document.createElement('span');m.style.cssText='display:inline-block;width:0;height:0;';
+    el.appendChild(m);var b=m.getBoundingClientRect().bottom;el.removeChild(m);return b;
+  }
+  function tinta(el){ /* alto real de las letras (sobre la linea base) */
+    var cs=getComputedStyle(el);
+    var cv=tinta.cv||(tinta.cv=document.createElement('canvas').getContext('2d'));
+    cv.font=cs.fontStyle+' '+cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
+    return cv.measureText(el.textContent.trim()).actualBoundingBoxAscent;
+  }
+  function ajustar(){
+    limpiarTitulos();
+    var c=[].slice.call(document.querySelectorAll('.controles')).filter(function(x){return x.offsetWidth>0;})[0];
+    if(!c||window.innerWidth<900)return;
+    var r=document.documentElement.style;
+    r.setProperty('--u','20px');
+    var w=c.querySelector('.vista .lbl').getBoundingClientRect().width;
+    var t=c.querySelector('.v-btns').getBoundingClientRect().width;
+    r.setProperty('--u',(20*t/w)+'px');
+    /* titulo: solo mas alto (scaleY), desde el tope de "Ordenar por:" hasta la base del valor de abajo */
+    var h2=c.closest('section').querySelector('h2');
+    var lbl=c.querySelector('.ord-btn .lbl'), val=c.querySelector('.ord-valor');
+    var hb=linea(h2), top=linea(lbl)-tinta(lbl), vb=linea(val);
+    var k=(vb-top)/tinta(h2);
+    h2.style.transformOrigin='0 '+(hb-h2.getBoundingClientRect().top)+'px';
+    h2.style.transform='translateY('+(vb-hb)+'px) scale(1.5,'+k+')'; /* +50% de ancho */
+  }
+  window.addEventListener('resize',ajustar);
+  var tabs=document.querySelectorAll('.tab');
+  function marcar(n){tabs.forEach(function(t){t.classList.toggle('sel',t.getAttribute('data-tab')===n);});}
+  function irArriba(){window.scrollTo({top:0,behavior:'smooth'});}
+  function abrir(v){reiniciar();main.setAttribute('data-vista',v);marcar(v);irArriba();requestAnimationFrame(ajustar);}
+  function llegar(){
+    var el=document.getElementById('llegar');
+    var alto=document.querySelector('.sticky-top').offsetHeight+16;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-alto,behavior:'smooth'});
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      var n=t.getAttribute('data-tab');
+      if(n==='llegar')llegar();else abrir(n);
+    });
+  });
+  document.querySelectorAll('.ver-todos').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();abrir(a.getAttribute('data-ir'));});
+  });
+  document.querySelector('.top .brand').addEventListener('click',function(){
+    reiniciar();main.setAttribute('data-vista','inicio');marcar(null);irArriba();
+  });
+
+
+  /* -- BUSCADOR: aparece solo al escribir; coincide con el inicio de cualquier palabra -- */
+  var inp=document.getElementById('buscar'), caja=document.getElementById('resultados');
+  function buscar(){
+    var q=norm(inp.value.trim());
+    caja.innerHTML='';
+    if(!q){caja.hidden=true;return;}
+    var m=productos.filter(function(x){return (' '+x.n).indexOf(' '+q)>-1;})
+      .sort(function(a,b){return a.n.localeCompare(b.n,'es');})
+      .slice(0,3); /* -- solo los 3 primeros por orden alfabetico -- */
+    if(!m.length){caja.hidden=true;return;}
+    m.forEach(function(x){
+      var f=document.createElement('div');f.className='res';
+      var i=document.createElement('div');i.className='squircle';i.textContent=x.img;
+      var d=document.createElement('div');
+      var n=document.createElement('div');n.className='res-name';n.textContent=x.nombre;
+      var pr=document.createElement('div');pr.className='res-price';pr.textContent=x.precio;
+      d.appendChild(n);d.appendChild(pr);f.appendChild(i);f.appendChild(d);caja.appendChild(f);
+    });
+    caja.hidden=false;
+  }
+  inp.addEventListener('input',buscar);
+  inp.addEventListener('focus',buscar);
+  inp.addEventListener('keydown',function(e){if(e.key==='Escape')caja.hidden=true;});
+  document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap'))caja.hidden=true;});
+
+  /* -- ICONO WHATSAPP DEL NUMERO: 1.2x el alto real de los digitos y centrado con ellos -- */
+  function ajustarWa(){
+    var a=document.querySelector('.wa-num');if(!a)return;
+    var t=a.querySelector('[data-wa-texto]'), sv=a.querySelector('svg');
+    if(!t||!sv||!a.offsetWidth)return;
+    var ink=tinta(t); if(!ink)return;
+    var h=ink*1.2;
+    sv.style.transform='';sv.style.width=h+'px';sv.style.height=h+'px';
+    var r=sv.getBoundingClientRect();
+    var dig=linea(t)-ink/2; /* centro vertical de los digitos */
+    sv.style.transform='translateY('+(dig-(r.top+r.height/2))+'px)';
+  }
+  window.addEventListener('resize',ajustarWa);
+  window.addEventListener('load',ajustarWa);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(ajustarWa);
+  ajustarWa();
+</script>
 </body>
 </html>
